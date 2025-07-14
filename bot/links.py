@@ -13,6 +13,11 @@ load_dotenv(dotenv_path=env_path)
 BOT_TOKEN = os.getenv("TG_BOT_TOKEN")
 site = os.getenv("SITE")
 site_token = os.getenv("SITE_TOKEN")
+api_url = f"{site}/api/link/create"
+headers = {
+    "Authorization": f"Bearer {site_token}",
+    "Content-Type": "application/json"
+}
 
 # slug generation
 def generate_slug(length=5):
