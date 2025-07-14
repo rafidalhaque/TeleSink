@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import os
 import aiohttp
 from pathlib import Path
+import logging
 
 env_path = Path('..') / 'env' / '.env'
 load_dotenv(dotenv_path=env_path)
