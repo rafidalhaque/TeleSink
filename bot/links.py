@@ -21,6 +21,11 @@ headers = {
     "Content-Type": "application/json"
 }
 
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.DEBUG  # Use DEBUG for maximum verbosity
+)
+
 # slug generation
 def generate_slug(length=5):
     chars = string.ascii_lowercase
