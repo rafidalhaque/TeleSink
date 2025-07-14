@@ -1,14 +1,14 @@
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, CallbackContext
 from dotenv import load_dotenv
 import os
 import sys
 from pathlib import Path
 
-env_path = Path('env') / '.env'
+env_path = Path('..') / 'env' / '.env'
 load_dotenv(dotenv_path=env_path)
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+BOT_TOKEN = os.getenv("TG_BOT_TOKEN")
 
 # start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
