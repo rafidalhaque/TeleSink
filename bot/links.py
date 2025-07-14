@@ -44,6 +44,31 @@ or let me pick a slug for you:
 Need help? Hit /help
 
 """
+
+help = """📖 *TeleSink Bot Help*
+
+I shorten long URLs into slick, short ones.
+
+🔧 *Commands:*
+• `/start` — Greet the bot
+• `/shorten <link> <slug?>` — Create a shortened URL
+   ⤷ Slug is optional; I’ll generate one if you skip it
+• `/help` — Show this help message
+
+🔗 *Example:*
+  /shorten https://example.com/docs mydoc
+
+Result:
+  ✅ https://sub.domain.tld/mydoc
+
+💻 *Source Code*
+
+[GitHub Repo](https://github.com/rafidalhaque/TeleSink) | [GitHub Repo of Sink](https://github.com/ccbikai/Sink)
+
+—
+Built with 💖 by @CosmopoliteMuslim & ChatGPT 😎
+
+"""
 # ---------------- start bot --------------------------------
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Assalamu Alaikum!")
