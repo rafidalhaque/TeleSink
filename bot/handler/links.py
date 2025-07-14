@@ -9,7 +9,8 @@ import aiohttp
 from pathlib import Path
 import logging
 
-env_path = Path('..') / 'env' / '.env'
+# load .env file from root/env/.env
+env_path = Path('../..') / 'env' / '.env'
 load_dotenv(dotenv_path=env_path)
 
 BOT_TOKEN = os.getenv("TG_BOT_TOKEN")
