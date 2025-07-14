@@ -39,7 +39,7 @@ async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     args = context.args
 
     if len(args) == 1:
-        await update.message.reply_text("Format:\n/shorten <link> <slug>\n\n_if you don't give the slug, slug will be automatically generated.")
+        await update.message.reply_text("Format:\n```\n/shorten <link> <slug>\n```\n_if you don't give the slug, slug will be automatically generated._", parse_mode='MarkdownV2')
 
     link = args[0]
     slug = args[1] if len(args) > 1 else generate_slug()
@@ -52,12 +52,12 @@ async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
             async with session.post(api_url, headers=headers, json=payload) as response:
                 if response.status == 201:
                     res = await response.json()
-                    await update.message.reply_text(f"✅ Shortened Link: {site}/{slug}. \n\n\n```\nResponse as JSON:\n{json.dumps(res, indent=2)}\n```")
+                    await update.message.reply_text(f"✅ Shortened Link: {site}/{slug}. \n\n\n```\nResponse as JSON:\n{json.dumps(res, indent=2)}\n```", parse_mode='MarkdownV2')
                 # elif response.status == 409:
                 #     slug = generate_slug()
                 else:
                     error_text = await response.text()
-                    await update.message.reply_text(f"**❌ API Error**\nError {response.status}:{error_text}\n\nPayload:\n{json.dumps(payload, indent=2)}")
+                    await update.message.reply_text(f"**❌ API Error**\nError {response.status}:{error_text}\n\n**Payload:**\n```\n{json.dumps(payload, indent=2)}\n```", parse_mode='MarkdownV2')
     except Exception as e:
         await update.message.reply_text(f"🚨 Request failed:\n{e}")
 
