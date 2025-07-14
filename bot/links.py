@@ -30,6 +30,20 @@ logging.basicConfig(
     level=logging.DEBUG  # Use DEBUG for maximum verbosity
 )
 
+# ---------------- message text ------------------------------
+start = """🌀 Welcome to TeleSink!
+
+I’m your quick-link ninja 🥷 — I shorten links for you using the Sinks API.
+
+Try:
+  /shorten https://example.com myslug
+
+or let me pick a slug for you:
+  /shorten https://example.com
+
+Need help? Hit /help
+
+"""
 # ---------------- start bot --------------------------------
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Assalamu Alaikum!")
