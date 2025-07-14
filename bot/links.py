@@ -52,7 +52,7 @@ async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
             async with session.post(api_url, headers=headers, json=payload) as response:
                 if response.status == 201:
                     res = await response.json()
-                    await update.message.reply_text(f"✅ Shortened Link: {site}/{slug}. \n\n\n```\nResponse as JSON:\n{json.dumps(res, indent=2)}\n```", parse_mode='MarkdownV2')
+                    await update.message.reply_text(f"✅ Shortened Link: {site}/{slug}. \n\n\n\nResponse as JSON:```\n{json.dumps(res, indent=2)}\n```", parse_mode='Markdown')
                 # elif response.status == 409:
                 #     slug = generate_slug()
                 else:
