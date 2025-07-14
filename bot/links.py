@@ -11,6 +11,10 @@ env_path = Path('..') / 'env' / '.env'
 load_dotenv(dotenv_path=env_path)
 
 BOT_TOKEN = os.getenv("TG_BOT_TOKEN")
+# slug generation
+def generate_slug(length=5):
+    chars = string.ascii_lowercase
+    return ''.join(random.choice(chars) for _ in range(length))
 
 # start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
