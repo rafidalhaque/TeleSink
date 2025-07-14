@@ -83,6 +83,6 @@ MIT — Free to modify, use, and distribute.
 
 * 🔗 [Sinks API](https://github.com/ccbikai/Sink)
 * 🤖 [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)
-* ✨ Developed with ❤️ by [@CosmopoliteMuslim](https://t.me/CosmopoliteMuslim)
+* ✨ Developed with ❤️ by [@rafidalhaque](https://t.me/rafidalhaque)
 
 ---
