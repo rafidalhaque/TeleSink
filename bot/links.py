@@ -11,7 +11,7 @@ env_path = Path('..') / 'env' / '.env'
 load_dotenv(dotenv_path=env_path)
 
 BOT_TOKEN = os.getenv("TG_BOT_TOKEN")
-url = os.getenv("BASE_URL")
+site = os.getenv("SITE")
 site_token = os.getenv("SITE_TOKEN")
 
 # slug generation
