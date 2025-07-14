@@ -1,3 +1,4 @@
+# packages
 import json
 import string
 import random
@@ -10,9 +11,10 @@ from pathlib import Path
 import logging
 
 # load .env file from root/env/.env
-env_path = Path('../..') / 'env' / '.env'
+env_path = Path('..') / 'env' / '.env'
 load_dotenv(dotenv_path=env_path)
 
+# load variables from .env
 BOT_TOKEN = os.getenv("TG_BOT_TOKEN")
 site = os.getenv("SITE")
 site_token = os.getenv("SITE_TOKEN")
@@ -22,6 +24,7 @@ headers = {
     "Content-Type": "application/json"
 }
 
+# enable logging for easy debugging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.DEBUG  # Use DEBUG for maximum verbosity
@@ -37,10 +40,7 @@ def generate_slug(length=5):
     chars = string.ascii_lowercase
     return ''.join(random.choice(chars) for _ in range(length))
 
-# start
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text("Assalamu Alaikum!")
-
+# link shortening
 async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     args = context.args
 
@@ -67,6 +67,7 @@ async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     except Exception as e:
         await update.message.reply_text(f"🚨 Request failed:\n{e}")
 
+# ------------------  main function -------------------------
 if __name__ == '__main__':
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
