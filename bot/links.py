@@ -57,7 +57,7 @@ async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
                 #     slug = generate_slug()
                 else:
                     error_text = await response.text()
-                    await update.message.reply_text(f"**❌ API Error**\nError {response.status}:{error_text}")
+                    await update.message.reply_text(f"**❌ API Error**\nError {response.status}:{error_text}\n\nPayload:\n{json.dumps(payload, indent=2)}")
     except Exception as e:
         await update.message.reply_text(f"🚨 Request failed:\n{e}")
 
