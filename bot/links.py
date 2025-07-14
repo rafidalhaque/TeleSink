@@ -40,6 +40,19 @@ async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         "link": link,
         "slug": slug
     }
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.post(api_url, headers=headers, json=payload) as response:
+                if response.status == 200:
+                    res = await response.json()
+                    await update.message.reply_text(f"✅ Shortened Link: {site}/{slug}. \n\n\n```\nResponse as JSON:\n{json.dumps(res, indent=2)}\n```")
+                # elif response.status == 409:
+                #     slug = generate_slug()
+                else:
+                    error_text = await response.text()
+                    await update.message.reply_text(f"**❌ API Error**\nError {response.status}:{error_text}")
+    except Exception as e:
+        await update.message.reply_text(f"🚨 Request failed:\n{e}")
 
 if __name__ == '__main__':
     app = ApplicationBuilder().token(BOT_TOKEN).build()
