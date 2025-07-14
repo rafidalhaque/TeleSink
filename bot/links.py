@@ -4,7 +4,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, CallbackContext
 from dotenv import load_dotenv
 import os
-import sys
+import aiohttp
 from pathlib import Path
 
 env_path = Path('..') / 'env' / '.env'
