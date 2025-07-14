@@ -80,6 +80,9 @@ async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
                     await update.message.reply_text(f"**❌ API Error**\nError {response.status}:{error_text}\n\n**Payload:**\n```\n{json.dumps(payload, indent=2)}\n```", parse_mode='Markdown')
     except Exception as e:
         await update.message.reply_text(f"🚨 Request failed:\n{e}")
+# ------------------ help function -------------------------
+async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text(help, parse_mode='Markdown')
 
 # ------------------  main function -------------------------
 if __name__ == '__main__':
