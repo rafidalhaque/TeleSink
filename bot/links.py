@@ -28,6 +28,18 @@ def generate_slug(length=5):
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Assalamu Alaikum!")
 
+async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    args = context.args
+
+    if len(args) == 1:
+        await update.message.reply_text("Format:\n/shorten <link> <slug>\n\n_if you don't give the slug, slug will be automatically generated.")
+
+    link = args[0]
+    slug = args[1] if len(args) > 1 else generate_slug()
+    payload = {
+        "link": link,
+        "slug": slug
+    }
 
 if __name__ == '__main__':
     app = ApplicationBuilder().token(BOT_TOKEN).build()
