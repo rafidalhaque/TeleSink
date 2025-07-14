@@ -44,7 +44,7 @@ async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     link = args[0]
     slug = args[1] if len(args) > 1 else generate_slug()
     payload = {
-        "link": link,
+        "url": link,
         "slug": slug
     }
     try:
