@@ -1,3 +1,5 @@
+import string
+import random
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, CallbackContext
 from dotenv import load_dotenv
