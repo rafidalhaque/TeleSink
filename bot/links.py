@@ -39,7 +39,7 @@ async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     args = context.args
 
     if len(args) == 1:
-        await update.message.reply_text("Format:\n```\n/shorten <link> <slug>\n```\n_if you don't give the slug, slug will be automatically generated._", parse_mode='MarkdownV2')
+        await update.message.reply_text("Format:\n```\n/shorten <link> <slug>\n```\n_if you don't give the slug, slug will be automatically generated._", parse_mode='Markdown')
 
     link = args[0]
     slug = args[1] if len(args) > 1 else generate_slug()
@@ -57,7 +57,7 @@ async def link_shorten(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
                 #     slug = generate_slug()
                 else:
                     error_text = await response.text()
-                    await update.message.reply_text(f"**❌ API Error**\nError {response.status}:{error_text}\n\n**Payload:**\n```\n{json.dumps(payload, indent=2)}\n```", parse_mode='MarkdownV2')
+                    await update.message.reply_text(f"**❌ API Error**\nError {response.status}:{error_text}\n\n**Payload:**\n```\n{json.dumps(payload, indent=2)}\n```", parse_mode='Markdown')
     except Exception as e:
         await update.message.reply_text(f"🚨 Request failed:\n{e}")
 
