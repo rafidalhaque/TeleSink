@@ -27,6 +27,11 @@ logging.basicConfig(
     level=logging.DEBUG  # Use DEBUG for maximum verbosity
 )
 
+# ---------------- start bot --------------------------------
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text("Assalamu Alaikum!")
+
+# ----------------  link shortener using links.teamsabily.tech  ------------------------------
 # slug generation
 def generate_slug(length=5):
     chars = string.ascii_lowercase
